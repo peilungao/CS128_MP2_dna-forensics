@@ -1,0 +1,163 @@
+21183 warnings generated.
+47022 warnings generated.
+73041 warnings generated.
+/grade/student/functions.cc:13:49: warning: the parameter 'dna_database_path' is copied for each invocation but only used as a const reference; consider making it a const reference [performance-unnecessary-value-param]
+std::vector<std::string> GetSTRList(std::string dna_database_path) {
+                                                ^
+                                    const      &
+/grade/student/functions.cc:15:28: error: invalid case style for variable 'STR_list' [readability-identifier-naming,-warnings-as-errors]
+  std::vector<std::string> STR_list;
+                           ^~~~~~~~
+                           str_list
+/grade/student/functions.cc:39:17: warning: the parameter 'dna_database_path' is copied for each invocation but only used as a const reference; consider making it a const reference [performance-unnecessary-value-param]
+    std::string dna_database_path) {
+                ^
+    const      &
+/grade/student/functions.cc:40:28: error: invalid case style for variable 'STR_list' [readability-identifier-naming,-warnings-as-errors]
+  std::vector<std::string> STR_list = GetSTRList(dna_database_path);
+                           ^~~~~~~~
+                           str_list
+/grade/student/functions.cc:50:43: error: invalid case style for variable 'STR_map' [readability-identifier-naming,-warnings-as-errors]
+      std::map<std::string, unsigned int> STR_map;
+                                          ^~~~~~~
+                                          str_map
+/grade/student/functions.cc:69:28: error: invalid case style for variable 'STR_list' [readability-identifier-naming,-warnings-as-errors]
+  std::vector<std::string> STR_list = GetSTRList(dna_database_path);
+                           ^~~~~~~~
+                           str_list
+/grade/student/functions.cc:69:50: warning: parameter 'dna_database_path' is passed by value and only copied once; consider moving it to avoid unnecessary copies [performance-unnecessary-value-param]
+  std::vector<std::string> STR_list = GetSTRList(dna_database_path);
+                                                 ^
+                                                 std::move(       )
+/grade/student/functions.cc:87:28: error: invalid case style for variable 'new_match_STR_list' [readability-identifier-naming,-warnings-as-errors]
+  std::vector<std::string> new_match_STR_list;
+                           ^~~~~~~~~~~~~~~~~~
+                           new_match_str_list
+/grade/student/functions.cc:88:14: error: invalid case style for variable 'STR' [readability-identifier-naming,-warnings-as-errors]
+  for (auto& STR : current_match_STR_list) {
+             ^~~
+             str
+/grade/student/functions.cc:104:5: warning: 2 adjacent parameters of 'MatchEntireSTR' of similar type ('std::string') are easily swapped by mistake [bugprone-easily-swappable-parameters]
+    std::string dna_database_path,
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/grade/student/functions.cc:104:17: note: the first parameter in the range is 'dna_database_path'
+    std::string dna_database_path,
+                ^~~~~~~~~~~~~~~~~
+/grade/student/functions.cc:105:17: note: the last parameter in the range is 'dna_sequence'
+    std::string dna_sequence) {
+                ^~~~~~~~~~~~
+/grade/student/functions.cc:106:16: error: invalid case style for variable 'ending_DNA_index' [readability-identifier-naming,-warnings-as-errors]
+  unsigned int ending_DNA_index = starting_DNA_index;
+               ^~~~~~~~~~~~~~~~
+               ending_dna_index
+/grade/student/functions.cc:107:28: error: invalid case style for variable 'STR_list' [readability-identifier-naming,-warnings-as-errors]
+  std::vector<std::string> STR_list = GetSTRList(dna_database_path);
+                           ^~~~~~~~
+                           str_list
+/grade/student/functions.cc:107:50: warning: parameter 'dna_database_path' is passed by value and only copied once; consider moving it to avoid unnecessary copies [performance-unnecessary-value-param]
+  std::vector<std::string> STR_list = GetSTRList(dna_database_path);
+                                                 ^
+                                                 std::move(       )
+/grade/student/functions.cc:108:28: error: invalid case style for variable 'new_match_STR_list' [readability-identifier-naming,-warnings-as-errors]
+  std::vector<std::string> new_match_STR_list = STR_list;
+                           ^~~~~~~~~~~~~~~~~~
+                           new_match_str_list
+/grade/student/functions.cc:110:16: error: invalid case style for variable 'DNA_index_at_STR' [readability-identifier-naming,-warnings-as-errors]
+  unsigned int DNA_index_at_STR = 0;
+               ^~~~~~~~~~~~~~~~
+               dna_index_at_str
+/grade/student/functions.cc:113:10: error: invalid case style for variable 'DNA' [readability-identifier-naming,-warnings-as-errors]
+    char DNA = dna_sequence[ending_DNA_index + DNA_index_at_STR];
+         ^~~
+         dna
+/grade/student/functions.cc:128:21: error: invalid case style for variable 'STR_matched' [readability-identifier-naming,-warnings-as-errors]
+        std::string STR_matched = new_match_STR_list[0];
+                    ^~~~~~~~~~~
+                    str_matched
+/grade/student/functions.cc:150:139: warning: the parameter 'current_STR' is copied for each invocation but only used as a const reference; consider making it a const reference [performance-unnecessary-value-param]
+std::map<std::string, unsigned int> CompareLongestRepeatInSTR(std::map<std::string, unsigned int> longest_consecutive_repeat, std::string current_STR, unsigned int current_repeat) {
+                                                                                                                                          ^
+                                                                                                                              const      &
+/grade/student/functions.cc:151:64: warning: parameter 'longest_consecutive_repeat' is passed by value and only copied once; consider moving it to avoid unnecessary copies [performance-unnecessary-value-param]
+  std::map<std::string, unsigned int> new_consecutive_repeat = longest_consecutive_repeat;
+                                                               ^
+                                                               std::move(                )
+/grade/student/functions.cc:152:7: error: the 'empty' method should be used to check for emptiness instead of comparing to an empty object [readability-container-size-empty,-warnings-as-errors]
+  if (current_STR != "") {
+      ^~~~~~~~~~~~~~~~~
+      !current_STR.empty()
+/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h:1023:7: note: method 'basic_string'::empty() defined here
+      empty() const _GLIBCXX_NOEXCEPT
+      ^
+/grade/student/functions.cc:166:61: warning: the parameter 'dna_database_path' is copied for each invocation but only used as a const reference; consider making it a const reference [performance-unnecessary-value-param]
+std::map<std::string, unsigned int> SequenceDNA(std::string dna_database_path,
+                                                            ^
+                                                const      &
+/grade/student/functions.cc:167:61: warning: the parameter 'dna_sequence' is copied for each invocation but only used as a const reference; consider making it a const reference [performance-unnecessary-value-param]
+                                                std::string dna_sequence) {
+                                                            ^
+                                                const      &
+/grade/student/functions.cc:168:28: error: invalid case style for variable 'STR_list' [readability-identifier-naming,-warnings-as-errors]
+  std::vector<std::string> STR_list = GetSTRList(dna_database_path);
+                           ^~~~~~~~
+                           str_list
+/grade/student/functions.cc:170:16: error: invalid case style for variable 'DNA_index' [readability-identifier-naming,-warnings-as-errors]
+  unsigned int DNA_index = 0;
+               ^~~~~~~~~
+               dna_index
+/grade/student/functions.cc:171:15: error: invalid case style for variable 'current_STR_match' [readability-identifier-naming,-warnings-as-errors]
+  std::string current_STR_match = "SAD";
+              ^~~~~~~~~~~~~~~~~
+              current_str_match
+/grade/student/functions.cc:172:16: error: invalid case style for variable 'current_STR_repeat' [readability-identifier-naming,-warnings-as-errors]
+  unsigned int current_STR_repeat = 1;
+               ^~~~~~~~~~~~~~~~~~
+               current_str_repeat
+/grade/student/functions.cc:174:42: error: invalid case style for variable 'MatchedSTR' [readability-identifier-naming,-warnings-as-errors]
+    std::pair<std::string, unsigned int> MatchedSTR = MatchEntireSTR(DNA_index, dna_database_path, dna_sequence);
+                                         ^~~~~~~~~~
+                                         matched_str
+/grade/student/functions.cc:175:17: error: invalid case style for variable 'STR' [readability-identifier-naming,-warnings-as-errors]
+    std::string STR = MatchedSTR.first;
+                ^~~
+                str
+/grade/student/functions.hpp:9:26: error: function 'GetSTRList' has a definition with different parameter names [readability-inconsistent-declaration-parameter-name,-warnings-as-errors]
+std::vector<std::string> GetSTRList(std::string dna_dataset_path);
+                         ^
+/grade/student/functions.cc:13:26: note: the definition seen here
+std::vector<std::string> GetSTRList(std::string dna_database_path) {
+                         ^
+/grade/student/functions.hpp:9:26: note: differing parameters are named here: ('dna_dataset_path'), in definition: ('dna_database_path')
+std::vector<std::string> GetSTRList(std::string dna_dataset_path);
+                         ^                      ~~~~~~~~~~~~~~~~
+                                                dna_database_path
+/grade/student/functions.hpp:11:60: error: function 'ReadDNADataset' has a definition with different parameter names [readability-inconsistent-declaration-parameter-name,-warnings-as-errors]
+std::map<std::string, std::map<std::string, unsigned int>> ReadDNADataset(std::string dna_dataset_path);
+                                                           ^
+/grade/student/functions.cc:38:60: note: the definition seen here
+std::map<std::string, std::map<std::string, unsigned int>> ReadDNADataset(
+                                                           ^
+/grade/student/functions.hpp:11:60: note: differing parameters are named here: ('dna_dataset_path'), in definition: ('dna_database_path')
+std::map<std::string, std::map<std::string, unsigned int>> ReadDNADataset(std::string dna_dataset_path);
+                                                           ^                          ~~~~~~~~~~~~~~~~
+                                                                                      dna_database_path
+/grade/student/functions.hpp:13:37: error: function 'InitializeDNASequence' has a definition with different parameter names [readability-inconsistent-declaration-parameter-name,-warnings-as-errors]
+std::map<std::string, unsigned int> InitializeDNASequence(std::string dna_dataset_path);
+                                    ^
+/grade/student/functions.cc:67:37: note: the definition seen here
+std::map<std::string, unsigned int> InitializeDNASequence(
+                                    ^
+/grade/student/functions.hpp:13:37: note: differing parameters are named here: ('dna_dataset_path'), in definition: ('dna_database_path')
+std::map<std::string, unsigned int> InitializeDNASequence(std::string dna_dataset_path);
+                                    ^                                 ~~~~~~~~~~~~~~~~
+                                                                      dna_database_path
+/grade/student/functions.hpp:30:37: error: function 'SequenceDNA' has a definition with different parameter names [readability-inconsistent-declaration-parameter-name,-warnings-as-errors]
+std::map<std::string, unsigned int> SequenceDNA(std::string dna_dataset_path,
+                                    ^
+/grade/student/functions.cc:166:37: note: the definition seen here
+std::map<std::string, unsigned int> SequenceDNA(std::string dna_database_path,
+                                    ^
+/grade/student/functions.hpp:30:37: note: differing parameters are named here: ('dna_dataset_path'), in definition: ('dna_database_path')
+std::map<std::string, unsigned int> SequenceDNA(std::string dna_dataset_path,
+                                    ^                       ~~~~~~~~~~~~~~~~
+                                                            dna_database_path
