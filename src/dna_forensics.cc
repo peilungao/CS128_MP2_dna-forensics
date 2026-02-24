@@ -14,9 +14,9 @@ int main(int argc, char* argv[]) {
   const std::string kSequenceDNA = argv[2];
   std::cout << ProfileDNA(kDatabaseDNA, kSequenceDNA);
 
-  // std::string dna_dataset_path = "/Users/veritas/scholar/University/Year1-Semester2/CS_128/MP2_dna-forensics/tests/dna_databases/db.csv";
+  // const std::string dna_dataset_path = "/Users/veritas/scholar/University/Year1-Semester2/CS_128/MP2_dna-forensics/tests/dna_databases/test-strs-3.dat";
 
-  // std::string dna_sequence = "GGTACAGATGGCAAAGATGAGATGAGATGGTCGTCGAGCAATCGTTTCGATAATGAATGAATGAATGAATGAATGAATGACACACGTCGATGCTAGCGGCGGATCGTATATTATAACCCCTAG";
+  // const std::string dna_sequence = "CACACACACACACACACACACACAGGCATAGTTCGAGGAGAAATATCCGGGGCCCACCCACACACACACAATTAATTAATTAAAAGACAACCAGCATATTAATTAATTAATTAATTACTCGGGTCTTGCCCAACCCGATTAATTAATTAATTA";
 
   // std::vector<std::string> STR_list = GetSTRList(dna_dataset_path);
 
@@ -25,5 +25,7 @@ int main(int argc, char* argv[]) {
   // std::pair<std::string, unsigned int> STR = MatchEntireSTR(0, dna_dataset_path, dna_sequence);
 
   // std::map<std::string, unsigned int> sequenced_dna = SequenceDNA(dna_dataset_path, dna_sequence);
+
+  // std::string name = ProfileDNA(dna_dataset_path, dna_sequence);
   return 0;
 }

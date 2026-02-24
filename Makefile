@@ -1,9 +1,16 @@
 CXX=clang++
+UNAME_S := $(shell uname -s)
+
+SANITIZERS = address,undefined,implicit-conversion,local-bounds,integer,leak
+ifeq ($(UNAME_S),Darwin)
+SANITIZERS = address,undefined,implicit-conversion,local-bounds,integer
+endif
+
 CXX_FLAGS = -std=c++20 -Iincludes \
   -Wall -Wextra -Werror -pedantic \
   -Wshadow -Wconversion -Wnull-dereference -Wnon-virtual-dtor -Wuninitialized -Wdouble-promotion \
   -O0 -gdwarf-4 \
-  -fsanitize=address,undefined,implicit-conversion,local-bounds,integer,leak \
+  -fsanitize=$(SANITIZERS) \
   -fno-omit-frame-pointer -fno-optimize-sibling-calls \
   -fsanitize-address-use-after-return=always
 

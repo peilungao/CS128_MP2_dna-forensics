@@ -15,7 +15,7 @@ std::vector<std::string> GetSTRList(std::string dna_database_path) {
   std::vector<std::string> str_list;
   unsigned int current_line_index = 0;
   for (std::string line; std::getline(ifs, line); line = "") {
-    std::cout << "line = \"" << line << '\"' << std::endl;
+    // std::cout << "line = \"" << line << '\"' << std::endl;
     std::vector<std::string> data = utilities::GetSubstrs(line, ',');
     // The first comma-separated entry on the first line of the DNA Database
     // will always be a string, but you cannot assume that that string will
@@ -42,14 +42,15 @@ std::map<std::string, std::map<std::string, unsigned int>> ReadDNADataset(
       dna_dataset;  // Maps name into corresponding STR sequence
   unsigned int current_line_index = 0;
   for (std::string line; std::getline(ifs, line); line = "") {
-    std::cout << "line = \"" << line << '\"' << std::endl;
+    // std::cout << "line = \"" << line << '\"' << std::endl;
     std::vector<std::string> data = utilities::GetSubstrs(line, ',');
     std::string first_col = data[0];
     if (current_line_index != 0) {  // Data rows
       std::map<std::string, unsigned int> str_map;
       for (unsigned int i = 1; i < data.size();
            i++) {  // Occurrence of STR in each person
-        unsigned int occurrence = std::stoi(data[i]);
+        unsigned int occurrence =
+            static_cast<unsigned int>(std::stoul(data[i]));
         str_map.insert(std::make_pair(str_list[i - 1], occurrence));
       }
       dna_dataset.insert(std::make_pair(first_col, str_map));
@@ -96,7 +97,8 @@ std::vector<std::string> SequenceCurrentDNA(
  * @param starting_DNA_index unsigned int
  * @param dna_database_path the absolute path to a DNA STR database
  * @param dna_sequence the DNA sequence under evaluation as strings
- * @return current_match, ending_DNA_index
+ * @return current_match: the current STR matched, ending_DNA_index: the index of which next match shall start
+ * Matches the next STR in the dna_sequence
  */
 std::pair<std::string, unsigned int> MatchEntireSTR(
     unsigned int starting_dna_index,
@@ -117,7 +119,7 @@ std::pair<std::string, unsigned int> MatchEntireSTR(
         // Restart the process, starting from the next character
         is_match = false;
         new_match_str_list = str_list;
-        ending_dna_index++;  // where a bug came out
+        ending_dna_index++;  // where a bug came out, previously it's ending_dna_index+=dna_index_at_str
         dna_index_at_str = 0;
       } else {
         // Match success
@@ -174,8 +176,7 @@ std::map<std::string, unsigned int> SequenceDNA(std::string dna_database_path,
   std::string current_str_match = "SAD";
   unsigned int current_str_repeat = 1;
   while (dna_index < dna_sequence.size()) {
-    std::pair<std::string, unsigned int> matched_str =
-        MatchEntireSTR(dna_index, dna_database_path, dna_sequence);
+    std::pair<std::string, unsigned int> matched_str = MatchEntireSTR(dna_index, dna_database_path, dna_sequence);
     std::string str = matched_str.first;
     unsigned int difference = matched_str.second - dna_index;
     dna_index = matched_str.second;
@@ -211,6 +212,7 @@ std::string ProfileDNA(const std::string& dna_database_path,
   std::map<std::string, std::map<std::string, unsigned int>> dna_dataset = ReadDNADataset(dna_database_path);
   std::map<std::string, unsigned int> sequenced_result = SequenceDNA(dna_database_path, dna_sequence);
   std::string person_name = "No match";
+  unsigned int match_person_count = 0;
   for (const auto& [person, str_fingerprint] : dna_dataset) {
     bool person_match = true;
     for (const auto& [str, longest_repeat] : sequenced_result) {
@@ -223,7 +225,11 @@ std::string ProfileDNA(const std::string& dna_database_path,
     }
     if (person_match) {
       person_name = person;
+      match_person_count++;
     }
+  }
+  if (match_person_count > 1) {
+    person_name = "No match";
   }
 
   return person_name;
